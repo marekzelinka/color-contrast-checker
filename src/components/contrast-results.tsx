@@ -1,7 +1,18 @@
+import { getRandomContentPlaceholder, type ContentItem } from "@/lib/content";
 import type { Colors } from "@/types";
 import { Stack, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 export function ContrastResult({ colors }: { colors: Colors }) {
+  const [contentItem, setContentItem] = useState<ContentItem>({
+    title: "",
+    text: "",
+  });
+
+  useEffect(() => {
+    setContentItem(getRandomContentPlaceholder());
+  }, []);
+
   return (
     <Stack
       gap={8}
@@ -12,12 +23,11 @@ export function ContrastResult({ colors }: { colors: Colors }) {
       textAlign="center"
       backgroundColor={colors.background}
     >
-      <Text fontSize="4xl" color={colors.foreground}>
-        Space Wonders
+      <Text fontSize="4xl" fontWeight="bold" color={colors.foreground}>
+        {contentItem.title}
       </Text>
-      <Text fontSize="lg" maxW="lg" color={colors.foreground}>
-        I watched a documentary on space. It talked about black holes. The
-        universe is so vast and mysterious. It blew my mind!
+      <Text fontSize="lg" color={colors.foreground}>
+        {contentItem.text}
       </Text>
     </Stack>
   );
