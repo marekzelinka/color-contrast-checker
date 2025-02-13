@@ -1,6 +1,6 @@
-# Color Contrast Checker ♿
+# Colour Contrast Checker ♿
 
-This project is a color contrast checker that calculates the contrast ratio between foreground and background text colors. It's written in [TypeScript](https://www.typescriptlang.org/) and uses [React](https://react.dev/) and [Chakra UI](https://chakra-ui.com/). I'm hosting the live version at [Vercel](https://vercel.com/).
+This project is a colour contrast checker that calculates the contrast ratio between foreground and background text colours. It's written in [TypeScript](https://www.typescriptlang.org/) and uses [React](https://react.dev/) and [Chakra UI](https://chakra-ui.com/). I'm hosting the live version at [Vercel](https://vercel.com/).
 
 ## Get started
 
