@@ -1,4 +1,4 @@
-import { formatColorCode } from "@/lib/color-format";
+import { formatColorCode } from "@/lib/utils";
 import type { Colors } from "@/types";
 import { GridItem, Input, SimpleGrid } from "@chakra-ui/react";
 import type { FormEvent } from "react";

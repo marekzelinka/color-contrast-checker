@@ -1,5 +1,10 @@
 import { Rating } from "@/components/ui/rating";
-import { getContrastRatio } from "@/lib/contrast-ratio";
+import { getContrastRatio } from "@/lib/color-contrast";
+import {
+  getContrastGrade,
+  getOverallStarCount,
+  getStarCount,
+} from "@/lib/utils";
 import type { Colors } from "@/types";
 import {
   Flex,
@@ -12,6 +17,22 @@ import {
 
 export function ContrastStats({ colors }: { colors: Colors }) {
   const contrastRatio = getContrastRatio(colors.foreground, colors.background);
+  const contrastGrade = getContrastGrade(contrastRatio);
+
+  const smallTextStarCount = getStarCount({
+    size: "small",
+    ratio: contrastRatio,
+  });
+  const largeTextStarCount = getStarCount({
+    size: "large",
+    ratio: contrastRatio,
+  });
+
+  const overallStarCount = getOverallStarCount({
+    contrastGrade,
+    smallTextStarCount,
+    largeTextStarCount,
+  });
 
   return (
     <SimpleGrid columns={2} gap={2}>
@@ -35,9 +56,9 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           </Text>
           <Stack alignItems="center" gap={0}>
             <Text fontSize="sm" fontWeight="medium">
-              Good
+              {contrastGrade}
             </Text>
-            <Rating readOnly defaultValue={3} size="sm" />
+            <Rating readOnly value={overallStarCount} size="sm" />
           </Stack>
         </Flex>
       </GridItem>
@@ -53,7 +74,7 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           <Text fontSize="sm" fontWeight="medium">
             Small text
           </Text>
-          <Rating readOnly defaultValue={1} count={3} size="sm" />
+          <Rating readOnly value={smallTextStarCount} count={3} size="sm" />
         </Flex>
       </GridItem>
       <GridItem>
@@ -68,7 +89,7 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           <Text fontSize="sm" fontWeight="medium">
             Large text
           </Text>
-          <Rating readOnly defaultValue={3} count={3} size="sm" />
+          <Rating readOnly value={largeTextStarCount} count={3} size="sm" />
         </Flex>
       </GridItem>
     </SimpleGrid>
