@@ -5,8 +5,8 @@ const system = createSystem(defaultConfig, {
   theme: {
     tokens: {
       fonts: {
-        heading: { value: "Bricolage Grotesque Variable" },
-        body: { value: "Bricolage Grotesque Variable" },
+        heading: { value: "'Outfit Variable'" },
+        body: { value: "'Outfit Variable'" },
       },
     },
   },
