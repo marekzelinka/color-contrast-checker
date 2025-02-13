@@ -2,17 +2,23 @@ import {
   Card,
   Container,
   Flex,
-  GridItem,
   Heading,
-  Input,
   SimpleGrid,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Field } from "./components/ui/field";
-import { Rating } from "./components/ui/rating";
+import { useState } from "react";
+import { ColorSelectForm } from "./components/color-select-form";
+import { ContrastResult } from "./components/contrast-results";
+import { ContrastStats } from "./components/contrast-stats";
+import type { Colors } from "./types";
 
 export function App() {
+  const [colors, setColors] = useState<Colors>({
+    foreground: "#ffffff",
+    background: "#4B88EE",
+  });
+
   return (
     <Flex
       as="main"
@@ -43,18 +49,7 @@ export function App() {
             <SimpleGrid columns={{ base: 1, lg: 2 }}>
               <Card.Body>
                 <Stack gap={8}>
-                  <SimpleGrid columns={2} gap={6}>
-                    <GridItem>
-                      <Field label="Text color">
-                        <Input />
-                      </Field>
-                    </GridItem>
-                    <GridItem>
-                      <Field label="Background color">
-                        <Input />
-                      </Field>
-                    </GridItem>
-                  </SimpleGrid>
+                  <ColorSelectForm colors={colors} onSubmit={setColors} />
                   <Stack gap={2}>
                     <Text
                       fontSize="sm"
@@ -63,69 +58,7 @@ export function App() {
                     >
                       Contrast
                     </Text>
-                    <SimpleGrid columns={2} gap={2}>
-                      <GridItem colSpan={2}>
-                        <Flex
-                          alignItems="center"
-                          justifyContent="space-between"
-                          bg="bg.muted"
-                          px={5}
-                          py={6}
-                          rounded="lg"
-                          roundedBottom={0}
-                        >
-                          <Text fontSize="5xl" fontWeight="bold">
-                            3.47
-                          </Text>
-                          <Stack alignItems="center" gap={0}>
-                            <Text fontSize="sm" fontWeight="medium">
-                              Good
-                            </Text>
-                            <Rating readOnly defaultValue={3} size="sm" />
-                          </Stack>
-                        </Flex>
-                      </GridItem>
-                      <GridItem>
-                        <Flex
-                          alignItems="center"
-                          justifyContent="space-between"
-                          bg="bg.muted"
-                          p={5}
-                          rounded="md"
-                          roundedTop={0}
-                        >
-                          <Text fontSize="sm" fontWeight="medium">
-                            Small text
-                          </Text>
-                          <Rating
-                            readOnly
-                            defaultValue={1}
-                            count={3}
-                            size="sm"
-                          />
-                        </Flex>
-                      </GridItem>
-                      <GridItem>
-                        <Flex
-                          alignItems="center"
-                          justifyContent="space-between"
-                          bg="bg.muted"
-                          p={5}
-                          rounded="md"
-                          roundedTop={0}
-                        >
-                          <Text fontSize="sm" fontWeight="medium">
-                            Large text
-                          </Text>
-                          <Rating
-                            readOnly
-                            defaultValue={3}
-                            count={3}
-                            size="sm"
-                          />
-                        </Flex>
-                      </GridItem>
-                    </SimpleGrid>
+                    <ContrastStats colors={colors} />
                   </Stack>
                 </Stack>
               </Card.Body>
@@ -138,19 +71,7 @@ export function App() {
                 color="white"
                 bg="blue.500"
               >
-                <Stack
-                  gap={8}
-                  alignItems="center"
-                  justifyContent="center"
-                  textAlign="center"
-                >
-                  <Text fontSize="4xl">Space Wonders</Text>
-                  <Text fontSize="lg" maxW="lg">
-                    I watched a documentary on space. It talked about black
-                    holes. The universe is so vast and mysterious. It blew my
-                    mind!
-                  </Text>
-                </Stack>
+                <ContrastResult />
               </Flex>
             </SimpleGrid>
           </Card.Root>
