@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# Color Contrast Checker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a color contrast checker that calculates the contrast ratio between foreground and background text colors. It's written in [TypeScript](https://www.typescriptlang.org/) and uses [React](https://react.dev/) and [Chakra UI](https://chakra-ui.com/). I'm hosting the live version at [Vercel](https://vercel.com/).
 
-Currently, two official plugins are available:
+## Get started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the repository:
 
-## Expanding the ESLint configuration
+   ```sh
+   git clone https://github.com/marekzelinka/color-contrast-checker.git
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Install the dependencies:
 
-- Configure the top-level `parserOptions` property like this:
+   ```sh
+   pnpm install
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+3. Finally, run the app in dev mode by running:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```sh
+   pnpm dev
+   ```
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+## Goals
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
+I wanted to try out Chakra UI, as there was a major release (version 3.0) not too long ago, and I wanted to see what changed and what was new. I liked the update to the color scheme and new components, which are of course all accessible.
+
+## Credits
+
+- [color-contrast-checker](https://github.com/mirayatech/color-contrast-checker/) by [@mirayatech](https://github.com/mirayatech/)
