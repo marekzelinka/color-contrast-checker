@@ -3,6 +3,7 @@ import {
   Container,
   Flex,
   Heading,
+  Mark,
   SimpleGrid,
   Stack,
   Text,
@@ -33,7 +34,8 @@ export function App() {
         <Container as="header" maxW="md" centerContent>
           <Heading size="4xl">Color Contrast Checker</Heading>
           <Text fontSize="sm" color="fg.muted">
-            Caculate the contrast ratio of text and background colors.
+            Caculate the <Mark variant="solid">contrast ratio</Mark> of text and
+            background colors.
           </Text>
         </Container>
         <Container
