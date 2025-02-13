@@ -2,8 +2,10 @@ import { Rating } from "@/components/ui/rating";
 import { getContrastRatio } from "@/lib/color-contrast";
 import {
   getContrastGrade,
-  getOverallStarCount,
+  getRatioColorShades,
+  getOverallStarCount as getRatioStarCount,
   getStarCount,
+  getTextStatColorShades,
 } from "@/lib/utils";
 import type { Colors } from "@/types";
 import {
@@ -27,12 +29,15 @@ export function ContrastStats({ colors }: { colors: Colors }) {
     size: "large",
     ratio: contrastRatio,
   });
-
-  const overallStarCount = getOverallStarCount({
+  const ratioStarCount = getRatioStarCount({
     contrastGrade,
     smallTextStarCount,
     largeTextStarCount,
   });
+
+  const ratioColorShades = getRatioColorShades(contrastGrade);
+  const smallTextColorShades = getTextStatColorShades(smallTextStarCount);
+  const largeTextColorShades = getTextStatColorShades(largeTextStarCount);
 
   return (
     <SimpleGrid columns={2} gap={2}>
@@ -45,6 +50,7 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           py={6}
           rounded="lg"
           roundedBottom={0}
+          {...ratioColorShades}
         >
           <Text fontSize="5xl" fontWeight="bold">
             <FormatNumber
@@ -55,10 +61,10 @@ export function ContrastStats({ colors }: { colors: Colors }) {
             />
           </Text>
           <Stack alignItems="center" gap={0}>
-            <Text fontSize="sm" fontWeight="medium">
+            <Text fontSize="sm" fontWeight="semibold">
               {contrastGrade}
             </Text>
-            <Rating readOnly value={overallStarCount} size="sm" />
+            <Rating readOnly value={ratioStarCount} />
           </Stack>
         </Flex>
       </GridItem>
@@ -70,8 +76,9 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           p={5}
           rounded="md"
           roundedTop={0}
+          {...smallTextColorShades}
         >
-          <Text fontSize="sm" fontWeight="medium">
+          <Text fontSize="sm" fontWeight="semibold">
             Small text
           </Text>
           <Rating readOnly value={smallTextStarCount} count={3} size="sm" />
@@ -85,8 +92,9 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           p={5}
           rounded="md"
           roundedTop={0}
+          {...largeTextColorShades}
         >
-          <Text fontSize="sm" fontWeight="medium">
+          <Text fontSize="sm" fontWeight="semibold">
             Large text
           </Text>
           <Rating readOnly value={largeTextStarCount} count={3} size="sm" />
