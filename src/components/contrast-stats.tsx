@@ -1,5 +1,5 @@
 import { Rating } from "@/components/ui/rating";
-import { getContrastRatio } from "@/lib/utils";
+import { getContrastRatio } from "@/lib/contrast-ratio";
 import type { Colors } from "@/types";
 import {
   Flex,

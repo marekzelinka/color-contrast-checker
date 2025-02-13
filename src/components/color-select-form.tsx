@@ -1,3 +1,4 @@
+import { formatColorCode } from "@/lib/color-format";
 import type { Colors } from "@/types";
 import { GridItem, Input, SimpleGrid } from "@chakra-ui/react";
 import type { FormEvent } from "react";
@@ -13,8 +14,12 @@ export function ColorSelectForm({
   const handleChange = (event: FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.currentTarget);
 
-    const foregroundColor = String(formData.get("foregroundColor"));
-    const backgroundColor = String(formData.get("backgroundColor"));
+    const foregroundColor = formatColorCode(
+      String(formData.get("foregroundColor")),
+    );
+    const backgroundColor = formatColorCode(
+      String(formData.get("backgroundColor")),
+    );
 
     onSubmit({ foreground: foregroundColor, background: backgroundColor });
   };
