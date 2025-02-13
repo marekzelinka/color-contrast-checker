@@ -1,16 +1,39 @@
 import type { Colors } from "@/types";
 
+/**
+ * Calculate the contrast ratio by dividing the luminance of the brighter color
+ * by the luminance of the darker color.
+ *
+ * @param foreground {string} - Foreground colorin hex format
+ * @param background {string} - Foreground colorin hex format
+ *
+ * @returns {number} The ratio of the luminance of the brightest shade to that
+ * of the darkest shade.
+ *
+ * @see https://stackoverflow.com/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color
+ */
 export function getContrastRatio(
   foreground: Colors["foreground"],
   background: Colors["background"],
-) {
+): number {
   const fgLum = getLuminance(foreground);
   const bgLum = getLuminance(background);
-  const brightestColor = Math.max(fgLum, bgLum);
-  const darkestColor = Math.min(fgLum, bgLum);
-  return (brightestColor + 0.05) / (darkestColor + 0.05);
+  const brightestShade = Math.max(fgLum, bgLum);
+  const darkestShade = Math.min(fgLum, bgLum);
+
+  return (brightestShade + 0.05) / (darkestShade + 0.05);
 }
 
+/**
+ * Calculates the color luminance by converting a color from its hexadecimal
+ * representation to RGB values and then applying the sRGB gamma correction.
+ *
+ * @param hex Color in hex format
+ *
+ * @returns {number} Relative luminance
+ *
+ * @see https://stackoverflow-com.translate.goog/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color?_x_tr_sl=en&_x_tr_tl=sv&_x_tr_hl=sv&_x_tr_pto=sc
+ */
 function getLuminance(hex: string): number {
   const rgb = parseInt(hex.slice(1), 16);
   const r = (rgb >> 16) & 0xff;
