@@ -63,15 +63,17 @@ export function App() {
                 </Stack>
               </Card.Body>
               <Flex
-                py={14}
-                px={7}
                 h="full"
+                flexDirection="column"
                 alignItems="center"
                 justifyContent="center"
-                color="white"
-                bg="blue.500"
+                css={{
+                  "& > *": {
+                    height: "100%",
+                  },
+                }}
               >
-                <ContrastResult />
+                <ContrastResult colors={colors} />
               </Flex>
             </SimpleGrid>
           </Card.Root>
