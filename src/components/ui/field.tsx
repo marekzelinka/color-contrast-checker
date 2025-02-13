@@ -11,16 +11,18 @@ export const Field = forwardRef<
   }
 >(({ label, children, helperText, errorText, optionalText, ...rest }, ref) => (
   <ChakraField.Root ref={ref} {...rest}>
-    {label && (
+    {label ? (
       <ChakraField.Label>
         {label}
         <ChakraField.RequiredIndicator fallback={optionalText} />
       </ChakraField.Label>
-    )}
+    ) : null}
     {children}
-    {helperText && (
+    {helperText ? (
       <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
-    )}
-    {errorText && <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>}
+    ) : null}
+    {errorText ? (
+      <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
+    ) : null}
   </ChakraField.Root>
 ));

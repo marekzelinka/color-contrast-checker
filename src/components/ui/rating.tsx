@@ -10,7 +10,7 @@ export const Rating = forwardRef<
   }
 >(({ icon, count = 5, label, ...rest }, ref) => (
   <RatingGroup.Root ref={ref} count={count} {...rest}>
-    {label && <RatingGroup.Label>{label}</RatingGroup.Label>}
+    {label ? <RatingGroup.Label>{label}</RatingGroup.Label> : null}
     <RatingGroup.HiddenInput />
     <RatingGroup.Control>
       {Array.from({ length: count }).map((_, index) => (
