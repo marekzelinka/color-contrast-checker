@@ -12,6 +12,15 @@ export function formatColorCode(color: string): string {
   return color.startsWith("#") ? color.slice(0, 7) : "#" + color.slice(0, 6);
 }
 
+// function componentToHex(c) {
+//   var hex = c.toString(16);
+//   return hex.length == 1 ? "0" + hex : hex;
+// }
+
+// export function rgbToHex(r, g, b) {
+//   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+// }
+
 export function getContrastGrade(ratio: number): string {
   if (ratio >= 7) {
     return "Super";

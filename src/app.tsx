@@ -8,9 +8,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { ColorSelectForm } from "./components/color-select-form";
 import { ContrastResult } from "./components/contrast-results";
 import { ContrastStats } from "./components/contrast-stats";
+import { SelectColorsForm } from "./components/select-colors-form";
 import type { Colors } from "./types";
 
 export function App() {
@@ -49,7 +49,7 @@ export function App() {
             <SimpleGrid columns={{ base: 1, lg: 2 }}>
               <Card.Body>
                 <Stack gap={8}>
-                  <ColorSelectForm colors={colors} onSubmit={setColors} />
+                  <SelectColorsForm colors={colors} onChange={setColors} />
                   <Stack gap={2}>
                     <Text
                       fontSize="sm"

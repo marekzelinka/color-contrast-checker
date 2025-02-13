@@ -74,7 +74,7 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           justifyContent="space-between"
           bg="bg.muted"
           p={5}
-          rounded="md"
+          rounded="lg"
           roundedTop={0}
           {...smallTextColorShades}
         >
@@ -90,7 +90,7 @@ export function ContrastStats({ colors }: { colors: Colors }) {
           justifyContent="space-between"
           bg="bg.muted"
           p={5}
-          rounded="md"
+          rounded="lg"
           roundedTop={0}
           {...largeTextColorShades}
         >

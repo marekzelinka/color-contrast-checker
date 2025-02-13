@@ -1,4 +1,5 @@
 import type { Colors } from "@/types";
+import { parseColor } from "@chakra-ui/react";
 
 /**
  * Calculate the contrast ratio by dividing the luminance of the brighter color
@@ -25,16 +26,18 @@ export function getContrastRatio(
 }
 
 /**
- * Calculates the color luminance by converting a color from its hexadecimal
- * representation to RGB values and then applying the sRGB gamma correction.
+ * Calculates the luminance of a given RGBA color value.
  *
- * @param hex Color in hex format
+ * @param rgbaValue - The RGBA color value as a string (e.g., "rgba(255, 0, 0,
+ * 1)").
  *
- * @returns {number} Relative luminance
+ * @returns The luminance of the color as a number between 0 and 1.
  *
  * @see https://stackoverflow-com.translate.goog/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color?_x_tr_sl=en&_x_tr_tl=sv&_x_tr_hl=sv&_x_tr_pto=sc
  */
-function getLuminance(hex: string): number {
+function getLuminance(rgbaValue: string): number {
+  const color = parseColor(rgbaValue);
+  const hex = color.toString("hex");
   const rgb = parseInt(hex.slice(1), 16);
   const r = (rgb >> 16) & 0xff;
   const g = (rgb >> 8) & 0xff;
