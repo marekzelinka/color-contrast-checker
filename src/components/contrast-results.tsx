@@ -16,8 +16,6 @@ export function ContrastResult({ colors }: { colors: Colors }) {
   return (
     <Stack
       gap={8}
-      py={14}
-      px={7}
       alignItems="center"
       justifyContent="center"
       textAlign="center"

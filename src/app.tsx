@@ -71,7 +71,10 @@ export function App() {
                 justifyContent="center"
                 css={{
                   "& > *": {
-                    height: "100%",
+                    height: "full",
+                    width: "full",
+                    py: 14,
+                    px: 7,
                   },
                 }}
               >
