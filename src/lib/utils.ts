@@ -67,20 +67,26 @@ export function getOverallStarCount({
   }
 }
 
-export function getStarCount({ size, ratio }: { size: Size; ratio: number }) {
+export function getStarCount({
+  size,
+  contrastRatio,
+}: {
+  size: Size;
+  contrastRatio: number;
+}) {
   switch (size) {
     case "small": {
-      if (ratio >= 7) {
+      if (contrastRatio >= 7) {
         return 3;
       }
-      if (ratio >= 4.5) {
+      if (contrastRatio >= 4.5) {
         return 2;
       }
 
       return 1;
     }
     case "large": {
-      if (ratio >= 3) {
+      if (contrastRatio >= 3) {
         return 3;
       }
 
@@ -97,18 +103,18 @@ const STAT_COLOR_SHADES: {
 } = {
   "poor-contrast": {
     colorPalette: "red",
-    backgroundColor: "red.200/70",
-    color: "red.700",
+    backgroundColor: "red.200/90",
+    color: "red.800",
   },
   "good-contrast": {
     colorPalette: "yellow",
-    backgroundColor: "yellow.200/70",
-    color: "yellow.700",
+    backgroundColor: "yellow.100/90",
+    color: "yellow.800",
   },
   "very-good-contrast": {
     colorPalette: "green",
-    backgroundColor: "green.200/70",
-    color: "green.700",
+    backgroundColor: "green.200/90",
+    color: "green.800",
   },
 };
 
