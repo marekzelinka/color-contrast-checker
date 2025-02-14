@@ -89,7 +89,7 @@ function ContrastGradeStat({
         <Text fontSize="sm" fontWeight="semibold">
           {contrastGrade}
         </Text>
-        <Rating readOnly value={ratioStarCount} />
+        <Rating readOnly value={ratioStarCount} count={5} />
       </Stack>
     </Flex>
   );
