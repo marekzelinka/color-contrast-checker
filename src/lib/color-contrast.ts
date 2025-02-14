@@ -26,19 +26,17 @@ export function getContrastRatio(
 }
 
 /**
- * Calculates the luminance of a given RGBA color value.
+ * Calculates the luminance of a given color value.
  *
- * @param rgbaValue - The RGBA color value as a string (e.g., "rgba(255, 0, 0,
- * 1)").
+ * @param colorString - The color value as a string (e.g., "rgba(255, 0, 0,
+ * 1)", "#FFFFFF").
  *
  * @returns The luminance of the color as a number between 0 and 1.
  *
  * @see https://stackoverflow-com.translate.goog/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color?_x_tr_sl=en&_x_tr_tl=sv&_x_tr_hl=sv&_x_tr_pto=sc
  */
-function getLuminance(rgbaValue: string): number {
-  const color = parseColor(rgbaValue);
-  const hex = color.toString("hex");
-  const rgb = parseInt(hex.slice(1), 16);
+function getLuminance(colorString: string): number {
+  const rgb = coerseToRgb(colorString);
   const r = (rgb >> 16) & 0xff;
   const g = (rgb >> 8) & 0xff;
   const b = (rgb >> 0) & 0xff;
@@ -52,4 +50,12 @@ function getLuminance(rgbaValue: string): number {
   });
 
   return 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
+}
+
+function coerseToRgb(colorString: string): number {
+  const color = parseColor(colorString);
+  const hex = color.toString("hex");
+  const rgb = parseInt(hex.slice(1), 16);
+
+  return rgb;
 }
