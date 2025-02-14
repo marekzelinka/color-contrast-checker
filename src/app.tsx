@@ -33,8 +33,8 @@ export function App() {
       <Stack w="full" gap={10}>
         <Container as="header" maxW="md" centerContent>
           <Heading size="4xl">Color Contrast Checker</Heading>
-          <Text fontSize="sm" color="fg.muted">
-            Caculate the <Mark variant="solid">contrast ratio</Mark> of text and
+          <Text mt={2} fontSize="sm" color="fg.muted">
+            Caculate the <Mark variant="solid">contrast</Mark> ratio of text and
             background colors.
           </Text>
         </Container>
