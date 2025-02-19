@@ -3,9 +3,16 @@ export interface Colors {
   background: string;
 }
 
-export type Size = "small" | "large";
+export type TestSize = "small" | "large";
 
 export type ContrastRating =
   | "poor-contrast"
   | "good-contrast"
   | "very-good-contrast";
+
+export type ContrastGrade =
+  | "Super"
+  | "Very Good"
+  | "Good"
+  | "Poor"
+  | "Very Poor";
