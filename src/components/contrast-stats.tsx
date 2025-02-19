@@ -1,5 +1,5 @@
 import { Rating } from "@/components/ui/rating";
-import { getContrastRatio } from "@/lib/color-contrast";
+import { getContrastRatio } from "@/lib/contrast-ratio";
 import {
   getContrastGrade,
   getRatioColorShades,
@@ -7,7 +7,7 @@ import {
   getStarCount,
   getTextStatColorShades,
 } from "@/lib/utils";
-import type { Colors, Size } from "@/types";
+import type { Colors, TestSize } from "@/types";
 import {
   Flex,
   FormatNumber,
@@ -95,7 +95,13 @@ function ContrastGradeStat({
   );
 }
 
-function TextGradeStat({ size, starCount }: { size: Size; starCount: number }) {
+function TextGradeStat({
+  size,
+  starCount,
+}: {
+  size: TestSize;
+  starCount: number;
+}) {
   const shades = getTextStatColorShades(starCount);
 
   return (

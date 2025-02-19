@@ -1,27 +1,7 @@
-import type { ContrastRating, Size } from "@/types";
+import type { ContrastGrade, ContrastRating, TestSize } from "@/types";
 import type { JsxStyleProps } from "@chakra-ui/react";
 
-/**
- * Corrects the input color by adding a hash (#) if missing
- *
- * @param color {string} - Color in hex format
- *
- * @returns {string} Formatted color code with a leading hash (#)
- */
-export function formatColorCode(color: string): string {
-  return color.startsWith("#") ? color.slice(0, 7) : "#" + color.slice(0, 6);
-}
-
-// function componentToHex(c) {
-//   var hex = c.toString(16);
-//   return hex.length == 1 ? "0" + hex : hex;
-// }
-
-// export function rgbToHex(r, g, b) {
-//   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-// }
-
-export function getContrastGrade(ratio: number): string {
+export function getContrastGrade(ratio: number): ContrastGrade {
   if (ratio >= 7) {
     return "Super";
   }
@@ -43,7 +23,7 @@ export function getOverallStarCount({
   smallTextStarCount,
   largeTextStarCount,
 }: {
-  contrastGrade: string;
+  contrastGrade: ContrastGrade;
   smallTextStarCount: number;
   largeTextStarCount: number;
 }): number {
@@ -71,7 +51,7 @@ export function getStarCount({
   size,
   contrastRatio,
 }: {
-  size: Size;
+  size: TestSize;
   contrastRatio: number;
 }) {
   switch (size) {
@@ -118,7 +98,7 @@ const STAT_COLOR_SHADES: {
   },
 };
 
-export function getRatioColorShades(contrastGrade: string) {
+export function getRatioColorShades(contrastGrade: ContrastGrade) {
   if (contrastGrade === "Poor" || contrastGrade === "Very Poor") {
     return STAT_COLOR_SHADES["poor-contrast"];
   } else if (contrastGrade === "Good") {
@@ -136,5 +116,6 @@ export function getTextStatColorShades(starCount: number) {
   } else if (starCount === 1) {
     return STAT_COLOR_SHADES["poor-contrast"];
   }
+
   return "";
 }
