@@ -15,16 +15,21 @@ export function ContrastResult({ colors }: { colors: Colors }) {
 
   return (
     <Stack
-      gap={8}
+      gap={2}
       alignItems="center"
       justifyContent="center"
       textAlign="center"
       backgroundColor={colors.background}
     >
-      <Text fontSize="4xl" fontWeight="bold" color={colors.foreground}>
+      <Text
+        fontSize="3xl"
+        fontWeight="semibold"
+        textWrap="balance"
+        color={colors.foreground}
+      >
         {contentItem.title}
       </Text>
-      <Text fontSize="lg" color={colors.foreground}>
+      <Text textWrap="pretty" color={colors.foreground}>
         {contentItem.text}
       </Text>
     </Stack>
