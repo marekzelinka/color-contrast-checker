@@ -10,8 +10,8 @@ const system = createSystem(defaultConfig, {
   theme: {
     tokens: {
       fonts: {
-        heading: { value: "'Outfit Variable'" },
-        body: { value: "'Outfit Variable'" },
+        heading: { value: "Outfit Variable" },
+        body: { value: "Outfit Variable" },
       },
     },
   },
